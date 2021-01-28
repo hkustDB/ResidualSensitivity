@@ -1,0 +1,16 @@
+select max(count) from (select edge1_from, edge1_to, count(*) from edge1 group by edge1_from, edge1_to) as t;
+select max(count) from (select edge2_from, edge2_to, count(*) from edge2 group by edge2_from, edge2_to) as t;
+select max(count) from (select edge3_from, edge3_to, count(*) from edge3 group by edge3_from, edge3_to) as t;
+select max(count) from (select edge4_from, edge4_to, count(*) from edge4 group by edge4_from, edge4_to) as t;
+create table t_1 as select edge1_from, edge2_to, count(*) from edge1, edge2 where edge1_to=edge2_from group by edge1_from, edge2_to;
+select max(count) from t_1;
+create table t_2 as select edge4_from, edge1_to, count(*) from edge4, edge1 where edge4_to=edge1_from group by edge4_from, edge1_to;
+select max(count) from t_2;
+create table t_3 as select edge2_from, edge3_to, count(*) from edge2, edge3 where edge2_to=edge3_from group by edge2_from, edge3_to;
+select max(count) from t_3;
+create table t_4 as select edge3_from, edge4_to, count(*) from edge3, edge4 where edge3_to=edge4_from group by edge3_from, edge4_to;
+select max(count) from t_4;
+select max(c) from(select edge1_from, edge3_to, sum(count) as c from t_1, edge3 where edge2_to=edge3_from group by edge1_from, edge3_to) as t;
+select max(c) from(select edge4_from, edge2_to, sum(count) as c from t_2, edge2 where edge1_to=edge2_from group by edge4_from, edge2_to) as t;
+select max(c) from(select edge3_from, edge1_to, sum(count) as c from t_4,edge1 where edge4_to=edge1_from group by edge3_from, edge1_to) as t;
+select max(c) from(select edge2_from, edge4_to, sum(count) as c from t_3,edge4 where edge3_to=edge4_from group by edge2_from, edge4_to) as t;

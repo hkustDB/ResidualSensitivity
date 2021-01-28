@@ -1,0 +1,10 @@
+drop table t_10;
+drop table t_11;
+drop table t_12;
+drop table t_13;
+drop table t_14;
+drop table t_5;
+drop table t_6;
+drop table t_7;
+drop table t_8;
+drop table t_9;

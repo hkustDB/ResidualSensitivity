@@ -1,0 +1,1 @@
+select count(*) from part, partsupp, supplier, lineitem, orders where part.P_PARTKEY=partsupp.PS_PARTKEY and partsupp.PS_SUPPKEY=supplier.S_SUPPKEY and partsupp.PS_SUPPKEY=lineitem.L_SUPPKEY and partsupp.PS_PARTKEY=lineitem.L_PARTKEY and lineitem.L_ORDERKEY=orders.O_ORDERKEY;

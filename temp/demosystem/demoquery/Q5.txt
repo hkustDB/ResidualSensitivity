@@ -1,0 +1,1 @@
+select count(*) from edge1, edge2, edge3 where edge1.edge1_to=edge2.edge2_from and edge2.edge2_to=edge3.edge3_from and edge3.edge3_to=edge1.edge1_from;

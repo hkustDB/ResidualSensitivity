@@ -1,0 +1,1 @@
+select count(*) from nation, customer, orders, lineitem, supplier where nation.N_NATIONKEY=customer.C_NATIONKEY and customer.C_CUSTKEY=orders.O_CUSTKEY and orders.O_ORDERKEY=lineitem.L_ORDERKEY and lineitem.L_SUPPKEY=supplier.S_SUPPKEY;

@@ -1,0 +1,10 @@
+select max(count) from (select nation.N_NATIONKEY, count(*) from nation group by nation.N_NATIONKEY) as t;
+select max(count) from (select customer.C_CUSTKEY, count(*) from nation, customer where nation.N_NATIONKEY=customer.C_NATIONKEY group by customer.C_CUSTKEY) as t;
+select max(count) from (select orders.O_CUSTKEY,orders.O_ORDERKEY,count(*) from orders group by orders.O_CUSTKEY, orders.O_ORDERKEY) as t;
+select max(count) from (select lineitem.L_ORDERKEY, lineitem.L_SUPPKEY,count(*) from lineitem group by lineitem.L_ORDERKEY,lineitem.L_SUPPKEY) as t;
+select max(count) from (select supplier.S_SUPPKEY,count(*) from supplier group by supplier.S_SUPPKEY) as t;
+select max(count) from (select orders.O_ORDERKEY, count(*) from nation, customer,orders where  nation.N_NATIONKEY=customer.C_NATIONKEY  and customer.C_CUSTKEY=orders.O_CUSTKEY group by orders.O_ORDERKEY) as t;
+select max(count) from (select orders.O_CUSTKEY, lineitem.L_SUPPKEY, count(*) from orders, lineitem where orders.O_ORDERKEY=lineitem.L_ORDERKEY group by orders.O_CUSTKEY, lineitem.L_SUPPKEY) as t;
+select max(count) from (select lineitem.L_ORDERKEY, count(*) from lineitem, supplier where lineitem.L_SUPPKEY=supplier.S_SUPPKEY group by lineitem.L_ORDERKEY) as t;
+select max(count) from (select lineitem.L_SUPPKEY, count(*) from nation, customer,orders, lineitem where  nation.N_NATIONKEY=customer.C_NATIONKEY  and customer.C_CUSTKEY=orders.O_CUSTKEY and orders.O_ORDERKEY=lineitem.L_ORDERKEY group by lineitem.L_SUPPKEY) as t;
+select max(count) from (select orders.O_CUSTKEY, count(*) from orders, lineitem, supplier where orders.O_ORDERKEY=lineitem.L_ORDERKEY and lineitem.L_SUPPKEY=supplier.S_SUPPKEY group by orders.O_CUSTKEY) as t;

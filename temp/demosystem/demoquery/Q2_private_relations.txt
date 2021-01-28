@@ -1,0 +1,4 @@
+partsupp
+supplier
+lineitem
+orders

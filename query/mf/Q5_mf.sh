@@ -1,0 +1,6 @@
+select max(count) from (select edge1_from, count(*) from edge1 group by edge1_from) as t;
+select max(count) from (select edge1_to, count(*) from edge1 group by edge1_to) as t;
+select max(count) from (select edge2_from, count(*) from edge2 group by edge2_from) as t;
+select max(count) from (select edge2_to, count(*) from edge2 group by edge2_to) as t;
+select max(count) from (select edge3_from, count(*) from edge3 group by edge3_from) as t;
+select max(count) from (select edge3_to, count(*) from edge3 group by edge3_to) as t;

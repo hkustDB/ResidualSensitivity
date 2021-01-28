@@ -1,0 +1,14 @@
+select max(count) from (select A, B, C, count(*) from R6 group by A, B, C) as t;
+select max(count) from (select edge3_from, edge3_to, count(*) from edge3 group by edge3_from, edge3_to) as t;
+select max(count) from (select edge4_from, edge4_to, count(*) from edge4 group by edge4_from, edge4_to) as t;
+select max(count) from (select edge5_from, edge5_to, count(*) from edge5 group by edge5_from, edge5_to) as t;
+select max(count) from (select A, B, C, count(*) from R6, edge3 where edge3_from=A and edge3_to=B group by A, B, C) as t;
+select max(count) from (select A, B, C, count(*) from R6, edge4 where edge4_from=B and edge4_to=C group by A, B, C) as t;
+select max(count) from (select A, B, C, count(*) from R6, edge5 where edge5_from=C and edge5_to=A group by A, B, C) as t;
+select max(count) from (select edge3_from, edge3_to, edge4_to, count(*) from edge3, edge4 where edge3_to=edge4_from group by edge3_from, edge3_to, edge4_to) as t;
+select max(count) from (select edge5_from, edge5_to, edge3_to, count(*) from edge3, edge5 where edge5_to=edge3_from group by edge5_from, edge5_to, edge3_to) as t;
+select max(count) from (select edge4_from, edge4_to, edge5_to, count(*) from edge4, edge5 where edge4_to=edge5_from group by edge4_from, edge4_to, edge5_to) as t;
+select max(count) from (select C, A, count(*) from R6, edge3, edge4 where  edge3_from=A and edge3_to=B and edge4_from=B and edge4_to=C group by C, A) as t;
+select max(count) from (select B, C, count(*) from R6, edge3, edge5 where  edge3_from=A and edge3_to=B and edge5_from=C and edge5_to=A group by B, C) as t;
+select max(count) from (select A, B, count(*) from R6, edge4, edge5 where  edge4_from=B and edge4_to=C and edge5_from=C and edge5_to=A group by A, B) as t;
+select max(count) from (select edge3_from, edge4_from, edge5_from, count(*) from edge3, edge4, edge5 where edge3_to=edge4_from  and edge4_to=edge5_from and edge5_to=edge3_from  group by edge3_from, edge4_from, edge5_from) as t;
